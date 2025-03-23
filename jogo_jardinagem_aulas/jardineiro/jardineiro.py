@@ -12,7 +12,7 @@ class Jardineiro:
         self.plantas_plantadas = []
         self.inventario = {}
         self.points = 0
-        self.plantas_disponiveis = {"tomate": Tomate, "alface": Alface, "cenoura": Cenoura}
+        self.plantas_disponiveis = {"tomate": Tomate, "alface": Alface, "cenoura": Cenoura, "batata": Batata}
 
     def plantar(self):
         planta_selecionada = Helper().seleccionar_item(self.inventario)

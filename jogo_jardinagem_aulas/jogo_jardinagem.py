@@ -2,7 +2,7 @@ from jardineiro.jardineiro import Jardineiro
 
 class Jogo:
     def __init__(self):
-        self.comandos = ["plantar", "regar", "recolher", "procurar", "ajuda", "sair"]
+        self.comandos = ["plantar", "regar", "recolher", "procurar", "inventario", "ajuda", "sair"]
         nome_jardineiro = input("Qual é o teu nome? ")
         print(f"Bem-vindo ao jogo de Jardinagem, {nome_jardineiro}! Inicia escrevendo ajuda para uma lista de comandos.")
         self.jardineiro = Jardineiro(nome_jardineiro)
