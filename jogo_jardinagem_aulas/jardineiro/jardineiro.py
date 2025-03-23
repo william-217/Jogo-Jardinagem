@@ -35,8 +35,7 @@ class Jardineiro:
         # completar
 
     def inv(self):
-        inv = self.inventario
-        print(f"O teu inventário é: {inv}") 
+        print(f"O teu inventário é: {self.inventario}") 
 
     def procurar(self):
         newSeed = random.choice(list(self.plantas_disponiveis.keys()))
