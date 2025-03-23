@@ -21,7 +21,7 @@ class Jogo:
                 elif accao_jogador == "procurar":
                     self.jardineiro.procurar()
                 elif accao_jogador == "inventario":
-                    self.jardineiro.inventario()
+                    self.jardineiro.inv()
                 elif accao_jogador == "ajuda":
                     print("*** Comandos ***")
                     for command in self.comandos:

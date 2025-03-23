@@ -3,6 +3,7 @@ from .helper import Helper
 from plantas.alface import Alface
 from plantas.cenoura import Cenoura
 from plantas.tomate import Tomate
+from plantas.batata import Batata
 
 class Jardineiro:
     """Representa um jardineiro que pode plantar, regar e recolher plantas."""
@@ -18,7 +19,7 @@ class Jardineiro:
         planta_selecionada = Helper().seleccionar_item(self.inventario)
         self.inventario[planta_selecionada] -= 1
         self.plantas_plantadas.append(self.plantas_disponiveis[planta_selecionada]())
-        print(f"Plantaste uma semente de {planta_selecionada}!")
+        print(f"Plantaste um rebento de {planta_selecionada}!")
         if self.inventario[planta_selecionada] == 0:
             del self.inventario[planta_selecionada]
         # Testes
@@ -33,12 +34,13 @@ class Jardineiro:
         planta_seleccionada = Helper().seleccionar_item(self.plantas_plantadas)
         # completar
 
-    def inventario(self):
-        print(f"O teu inventário é: {self.inventario}") 
+    def inv(self):
+        inv = self.inventario
+        print(f"O teu inventário é: {inv}") 
 
     def procurar(self):
         newSeed = random.choice(list(self.plantas_disponiveis.keys()))
-        print(f"Encontraste uma semente de {newSeed}!")
+        print(f"Encontraste um rebento de {newSeed}!")
         if newSeed in self.inventario:
             self.inventario[newSeed] += 1
         else:
