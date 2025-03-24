@@ -27,8 +27,9 @@ class Jardineiro:
     def regar(self):
         for planta in self.plantas_plantadas:
             planta.crescer()
-            print(planta.check_status)
-            print(planta.pronto_recolher)
+           
+           #Testes
+           # print(f"Plant state: {planta.check_status}, Pronto a recolher?: {planta.pronto_recolher}")
     
     def recolher(self):
         planta_selecionada = Helper().seleccionar_item(self.plantas_plantadas)
