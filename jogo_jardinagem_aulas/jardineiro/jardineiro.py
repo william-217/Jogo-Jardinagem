@@ -20,13 +20,16 @@ class Jardineiro:
         planta_selecionada = Helper().seleccionar_item(self.inventario)
         self.inventario[planta_selecionada] -= 1
         self.plantas_plantadas.append(self.plantas_disponiveis[planta_selecionada]())
-        print(f"Plantaste um rebento de {planta_selecionada}!")
+        print(f"Plantaste uma semente de {planta_selecionada}!")
         if self.inventario[planta_selecionada] == 0:
             del self.inventario[planta_selecionada]
 
     def regar(self):
         for planta in self.plantas_plantadas:
             planta.crescer()
+           
+           #Testes
+           # print(f"Plant state: {planta.check_status}, Pronto a recolher?: {planta.pronto_recolher}")
     
     def recolher(self):
         planta_selecionada = Helper().seleccionar_item(self.plantas_plantadas)
@@ -39,7 +42,7 @@ class Jardineiro:
             else:
                 self.inventario[planta] = 1
 
-            print(f"Recolheste um/a {planta}!")
+            print(f"Recolheste {planta}!")
             self.points += pontuacao
         else:
             print("A planta selecionada ainda não está pronta para ser recolhida!")
@@ -55,7 +58,7 @@ class Jardineiro:
 
     def procurar(self):
         newSeed = random.choice(list(self.plantas_disponiveis.keys()))
-        print(f"Encontraste um rebento de {newSeed}!")
+        print(f"Encontraste uma semente de {newSeed}!")
         if newSeed in self.inventario:
             self.inventario[newSeed] += 1
         else:
