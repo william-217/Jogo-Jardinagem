@@ -1,5 +1,6 @@
 import random
 from .helper import Helper
+from plantas.planta import Planta
 from plantas.alface import Alface
 from plantas.cenoura import Cenoura
 from plantas.tomate import Tomate
@@ -22,20 +23,33 @@ class Jardineiro:
         print(f"Plantaste um rebento de {planta_selecionada}!")
         if self.inventario[planta_selecionada] == 0:
             del self.inventario[planta_selecionada]
-        # Testes
-        print(self.plantas_plantadas)
-        print(self.inventario)
 
     def regar(self):
         for planta in self.plantas_plantadas:
             planta.crescer()
+            print(planta.check_status)
+            print(planta.pronto_recolher)
     
     def recolher(self):
-        planta_seleccionada = Helper().seleccionar_item(self.plantas_plantadas)
-        # completar
+        planta_selecionada = Helper().seleccionar_item(self.plantas_plantadas)
+        for planta_selecionada in self.plantas_plantadas:
+            if planta_selecionada.pronto_recolher:
+                pontuacao = planta_selecionada.recolher()
+                self.plantas_plantadas.remove(planta_selecionada)
+
+                if planta_selecionada in self.inventario:
+                    self.inventario[planta_selecionada] += 1
+                else:
+                    self.inventario[planta_selecionada] = 1
+
+                print(f"Recolheste um/a {planta_selecionada}!")
+                self.points += pontuacao
 
     def inv(self):
-        print(f"O teu inventário é: {self.inventario}") 
+        print(f"O teu inventário é: {self.inventario}")
+
+    def pont(self):
+        print(f"A tua pontuação é: {self.points}!")
 
     def procurar(self):
         newSeed = random.choice(list(self.plantas_disponiveis.keys()))
