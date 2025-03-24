@@ -13,4 +13,4 @@ class Batata(Planta):
         if self.__estado_atual < len(self.estado_crescimento)-1 and self.fertilizado == True:
             self.__estado_atual += 2
         if self.__estado_atual == len(self.estado_crescimento)-1:
-            self.__pronto_recolher = True
+            self.pronto_recolher = True
