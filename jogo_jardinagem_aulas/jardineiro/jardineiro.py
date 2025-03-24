@@ -27,29 +27,31 @@ class Jardineiro:
     def regar(self):
         for planta in self.plantas_plantadas:
             planta.crescer()
-            print(planta.check_status)
-            print(planta.pronto_recolher)
     
     def recolher(self):
         planta_selecionada = Helper().seleccionar_item(self.plantas_plantadas)
-        for planta_selecionada in self.plantas_plantadas:
-            if planta_selecionada.pronto_recolher:
-                pontuacao = planta_selecionada.recolher()
-                self.plantas_plantadas.remove(planta_selecionada)
+        if planta_selecionada.pronto_recolher:
+            pontuacao = planta_selecionada.recolher()
+            self.plantas_plantadas.remove(planta_selecionada)
+            planta = planta_selecionada.nome.lower()
+            if planta in self.inventario:
+                self.inventario[planta] += 1
+            else:
+                self.inventario[planta] = 1
 
-                if planta_selecionada in self.inventario:
-                    self.inventario[planta_selecionada] += 1
-                else:
-                    self.inventario[planta_selecionada] = 1
-
-                print(f"Recolheste um/a {planta_selecionada}!")
-                self.points += pontuacao
+            print(f"Recolheste um/a {planta}!")
+            self.points += pontuacao
+        else:
+            print("A planta selecionada ainda não está pronta para ser recolhida!")
 
     def inv(self):
         print(f"O teu inventário é: {self.inventario}")
 
     def pont(self):
         print(f"A tua pontuação é: {self.points}!")
+
+    def jardim(self):
+        print(f"As plantas no teu jardim são: {self.plantas_plantadas}")
 
     def procurar(self):
         newSeed = random.choice(list(self.plantas_disponiveis.keys()))

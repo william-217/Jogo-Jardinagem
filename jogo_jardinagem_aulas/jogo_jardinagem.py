@@ -2,7 +2,7 @@ from jardineiro.jardineiro import Jardineiro
 
 class Jogo:
     def __init__(self):
-        self.comandos = ["plantar", "regar", "recolher", "procurar", "inventario", "pontuacao", "ajuda", "sair"]
+        self.comandos = ["plantar", "regar", "recolher", "procurar", "inventario", "pontuacao", "jardim", "ajuda", "sair"]
         nome_jardineiro = input("Qual é o teu nome? ")
         print(f"Bem-vindo ao jogo de Jardinagem, {nome_jardineiro}! Inicia escrevendo ajuda para uma lista de comandos.")
         self.jardineiro = Jardineiro(nome_jardineiro)
@@ -24,6 +24,8 @@ class Jogo:
                     self.jardineiro.pont()
                 elif accao_jogador == "inventario":
                     self.jardineiro.inv()
+                elif accao_jogador == "jardim":
+                    self.jardineiro.jardim()
                 elif accao_jogador == "ajuda":
                     print("*** Comandos ***")
                     for command in self.comandos:
@@ -31,6 +33,9 @@ class Jogo:
                 elif accao_jogador == "sair":
                     print(f"A tua pontuação é {self.jardineiro.points}!")
                     print("Adeus.")
+                    f = open("highscore.txt", "a")
+                    f.write(f"Player: {self.jardineiro.nome} - Score: {self.jardineiro.points}\n")
+                    f.close()
                     break
             else:
                 print("Comando inválido")

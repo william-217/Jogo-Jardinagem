@@ -1,0 +1,2 @@
+Player: gui - Score: 10
+Player: lol - Score: 8

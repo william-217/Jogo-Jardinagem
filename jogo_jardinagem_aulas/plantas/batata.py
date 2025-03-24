@@ -10,7 +10,7 @@ class Batata(Planta):
         self.fertilizado == True
 
     def crescer(self):
-        if self.__estado_atual < len(self.estado_crescimento)-1:
-            self.__estado_atual += 1
+        if self.__estado_atual < len(self.estado_crescimento)-1 and self.fertilizado == True:
+            self.__estado_atual += 2
         if self.__estado_atual == len(self.estado_crescimento)-1:
             self.__pronto_recolher = True
